@@ -50,10 +50,14 @@ function transformFilterInput(filter, objectName) {
         default:
           break;
       }
-      conditionForAnd += element.a + " " + condition + " " + element.b;
+      conditionForAnd += element.a + " " + condition + " " + escapeCharacters(element.b);
     }
     conditionForOr += conditionForAnd + " ) ";
   }
   var query = 'select * from ' + objectName + ' ' + conditionForOr + ';';
   return query;
+}
+
+function escapeCharacters(element) {
+  return element.replace("'","\'");
 }
