@@ -5,7 +5,7 @@ function omit (parameters, prefix = '') {
       continue
     }
     if (key === 'id') {
-      object[key] = prefix + 'x' + parameters[key]
+      object[key] = parameters[key].startWith(prefix+'x') ? parameters[key] :  prefix + 'x' + parameters[key]
     } else {
       object[key] = parameters[key]
     }
